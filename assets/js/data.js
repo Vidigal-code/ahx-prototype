@@ -4,7 +4,7 @@ const AHX_CONFIG = {
     shortName: "AHX",
     icon: "icon-not-backgroud.png",
     iconLight: "icon-not-backgroud-dark.png",
-    banner: "banneroficial2.png",
+    banner: "banneroficial3.png",
     bannerAlt: "banner2.png"
   },
   routes: {
