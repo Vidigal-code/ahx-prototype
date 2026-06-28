@@ -155,25 +155,25 @@ function renderDiaryKanbanColumn(module, status) {
 function renderDiaryContainerActionBar(module, options = {}, isEditing = false) {
   const actions = diaryContainerActionButtons(module, options, isEditing);
   const isFullscreen = Boolean(options.fullscreen);
-  const isHidden = !isFullscreen && isDiaryContainerActionsHidden(module.id);
+  const isHidden = isDiaryContainerActionsHidden(module.id);
   const page = diaryContainerActionPage(module.id, actions.length);
   const pageCount = Math.max(1, Math.ceil(actions.length / 2));
-  const visibleActions = isFullscreen ? actions : actions.slice((page - 1) * 2, page * 2);
+  const visibleActions = actions.slice((page - 1) * 2, page * 2);
 
   return node("div", { className: "diary-container__action-shell" }, [
     node("div", { className: "diary-container__action-controls" }, [
       node("div", { className: "diary-container__action-start" }, [
-        isFullscreen ? null : iconButton(isHidden ? t("showIconButtons") : t("hideIconButtons"), isHidden ? "eye" : "eye-off", () => toggleDiaryContainerActions(module.id))
+        iconButton(isHidden ? t("showIconButtons") : t("hideIconButtons"), isHidden ? "eye" : "eye-off", () => toggleDiaryContainerActions(module.id))
       ]),
       node("div", { className: "diary-container__action-nav" }, [
-        isFullscreen ? null : iconButton(t("previous"), "chevron-left", () => changeDiaryContainerActionPage(module.id, -1, actions.length), isHidden || page <= 1),
-        isFullscreen ? null : iconButton(t("next"), "chevron-right", () => changeDiaryContainerActionPage(module.id, 1, actions.length), isHidden || page >= pageCount)
+        iconButton(t("previous"), "chevron-left", () => changeDiaryContainerActionPage(module.id, -1, actions.length), isHidden || page <= 1),
+        iconButton(t("next"), "chevron-right", () => changeDiaryContainerActionPage(module.id, 1, actions.length), isHidden || page >= pageCount)
       ]),
       node("div", { className: "diary-container__action-end" }, [
         isFullscreen ? iconButton(t("close"), "x", closeDiaryFullscreen) : iconButton(t("fullscreen"), "maximize-2", () => openDiaryFullscreen(module.id))
       ])
     ]),
-    !isHidden ? node("div", { className: `diary-container__actions${isFullscreen ? " diary-container__actions--full" : ""}`, "aria-label": t("containerActions") }, visibleActions) : null
+    !isHidden ? node("div", { className: "diary-container__actions", "aria-label": t("containerActions") }, visibleActions) : null
   ]);
 }
 
@@ -242,7 +242,7 @@ function renderDiaryInfoModal() {
 function renderDiaryGlobalSearchModal() {
   if (storage.get("ahx_diary_global_search_modal", "") !== "open") return null;
   return node("section", { className: "filter-modal", role: "dialog", "aria-modal": "true" }, [
-    node("form", { className: "filter-modal__panel filter-modal__panel--compact", onSubmit: applyDiaryGlobalSearch }, [
+    node("form", { className: "filter-modal__panel filter-modal__panel--compact diary-global-search-modal", onSubmit: applyDiaryGlobalSearch }, [
       node("div", { className: "filter-modal__header" }, [
         node("div", { className: "diary-title" }, [
           lucideIcon("search", "lucide-icon"),

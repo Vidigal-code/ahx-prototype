@@ -1888,10 +1888,6 @@ body.is-listening .status-dot {
   justify-content: center;
 }
 
-.diary-container__actions--full {
-  grid-template-columns: repeat(auto-fit, var(--button-height));
-}
-
 .diary-container__action-controls .icon-button,
 .diary-container__actions .icon-button {
   width: var(--button-height);
@@ -2814,8 +2810,7 @@ body.is-listening .mic-toggle {
     gap: 8px;
   }
 
-  .diary-container__actions,
-  .diary-container__actions--full {
+  .diary-container__actions {
     grid-template-columns: repeat(2, var(--button-height));
     justify-content: center;
   }
@@ -2896,16 +2891,24 @@ body.is-listening .mic-toggle {
   }
 
   .filter-modal {
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
     padding: 0;
   }
 
   .container-fullscreen {
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
     padding: 0;
   }
 
   .container-fullscreen__panel {
     width: 100%;
+    height: 100dvh;
     min-height: 100dvh;
+    overflow: auto;
   }
 
   .container-fullscreen .diary-container {
@@ -2920,10 +2923,15 @@ body.is-listening .mic-toggle {
   }
 
   .filter-modal__panel {
+    align-content: start;
     width: 100%;
+    height: 100dvh;
     min-height: 100dvh;
+    margin: 0;
     border: 0;
     border-radius: 0;
+    overflow: auto;
+    padding: 18px;
     justify-items: stretch;
   }
 
@@ -2933,12 +2941,32 @@ body.is-listening .mic-toggle {
   }
 
   .filter-modal__panel > .button-row {
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: stretch;
   }
 
   .filter-modal__panel .button {
-    width: fit-content;
-    max-width: min(100%, var(--button-max-width));
+    width: 100%;
+    max-width: none;
+  }
+
+  .diary-global-search-modal {
+    width: 100vw;
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+
+  .diary-global-search-modal > .button-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .diary-global-search-modal > .button-row .button {
+    width: 100%;
+    max-width: none;
   }
 
   .delete-option {
