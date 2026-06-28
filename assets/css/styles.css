@@ -1212,6 +1212,153 @@ body.is-listening .status-dot {
   gap: 10px;
 }
 
+.chat-page {
+  display: grid;
+  gap: 20px;
+  padding-bottom: 58px;
+}
+
+.chat-hero,
+.chat-workspace {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  padding: 0 clamp(18px, 3vw, 36px);
+}
+
+.chat-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  padding-top: 8px;
+}
+
+.chat-active-mode {
+  width: fit-content;
+}
+
+.chat-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.42fr);
+  align-items: start;
+  gap: 16px;
+}
+
+.chat-ai-panel {
+  min-height: 620px;
+  grid-template-rows: auto 1fr auto;
+}
+
+.chat-ai-log {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-height: 420px;
+  max-height: 62vh;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+  background: color-mix(in srgb, var(--surface-2), transparent 18%);
+}
+
+.chat-ai-message {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  max-width: 88%;
+}
+
+.chat-ai-message--user {
+  justify-self: end;
+}
+
+.chat-ai-message__avatar {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--muted);
+}
+
+.chat-ai-message p {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  background: var(--surface);
+  color: var(--text);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.chat-ai-message--user p {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.chat-action-choices {
+  display: grid;
+  gap: 10px;
+  width: min(100%, 520px);
+}
+
+.chat-action-choice {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 850;
+  text-align: left;
+  cursor: pointer;
+}
+
+.chat-action-choice.is-active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--surface), var(--accent) 8%);
+}
+
+.chat-ai-input {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.chat-control-panel {
+  position: sticky;
+  top: 18px;
+}
+
+.chat-control-actions,
+.chat-delete-row {
+  display: grid;
+  gap: 10px;
+}
+
+.chat-control-actions .button,
+.chat-delete-row .button {
+  width: 100%;
+  max-width: 100%;
+}
+
+.button--danger {
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger), transparent 88%);
+  color: var(--danger);
+}
+
 .feature-pills {
   display: flex;
   flex-wrap: wrap;
@@ -1230,6 +1377,281 @@ body.is-listening .status-dot {
   color: var(--text);
   font-size: 0.88rem;
   font-weight: 750;
+}
+
+.home-dashboard {
+  gap: 20px;
+}
+
+.dashboard-header {
+  align-items: flex-end;
+}
+
+.dashboard-completion {
+  display: grid;
+  min-width: 150px;
+  min-height: 112px;
+  align-content: center;
+  justify-items: center;
+  border: 1px solid color-mix(in srgb, var(--line), var(--accent) 16%);
+  border-radius: var(--radius);
+  padding: 16px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface), var(--accent) 7%), var(--surface));
+  box-shadow: var(--shadow);
+}
+
+.dashboard-completion strong {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1;
+}
+
+.dashboard-completion span {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.dashboard-stat-grid,
+.dashboard-progress,
+.dashboard-modules {
+  width: min(100%, 1180px);
+  margin: 0 auto;
+  padding: 0 clamp(18px, 3vw, 36px);
+}
+
+.dashboard-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+}
+
+.dashboard-stat-card,
+.dashboard-module-card {
+  border: 1px solid color-mix(in srgb, var(--line), var(--accent) 12%);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface), var(--accent) 4%), var(--surface));
+  box-shadow: var(--shadow);
+}
+
+.dashboard-stat-card {
+  display: grid;
+  gap: 10px;
+  min-height: 150px;
+  align-content: center;
+  padding: 16px;
+}
+
+.dashboard-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.dashboard-icon__glyph {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.dashboard-stat-card strong {
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  line-height: 1;
+}
+
+.dashboard-stat-card span:last-child {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+  overflow-wrap: anywhere;
+}
+
+.dashboard-progress {
+  display: grid;
+}
+
+.dashboard-progress__panel {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.dashboard-progress__header {
+  min-width: 0;
+}
+
+.dashboard-progress__rows {
+  display: grid;
+  gap: 12px;
+}
+
+.dashboard-progress__row {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.42fr) 58px minmax(180px, 1fr) 58px;
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  border: 1px solid color-mix(in srgb, var(--line), var(--accent) 10%);
+  border-radius: var(--radius);
+  padding: 12px;
+  background: color-mix(in srgb, var(--surface), var(--surface-2) 42%);
+}
+
+.dashboard-progress__label {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  gap: 10px;
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 850;
+}
+
+.dashboard-progress__label span:last-child {
+  overflow-wrap: anywhere;
+}
+
+.dashboard-progress__dot {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent), transparent 82%);
+}
+
+.dashboard-progress__value,
+.dashboard-progress__percent {
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 900;
+  text-align: right;
+}
+
+.dashboard-progress__percent {
+  color: var(--muted);
+}
+
+.dashboard-progress__track {
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-2), var(--line) 28%);
+}
+
+.dashboard-progress__bar {
+  display: block;
+  height: 100%;
+  min-width: 4px;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.dashboard-progress__bar--planned {
+  background: #6da3ff;
+}
+
+.dashboard-progress__dot--planned {
+  background: #6da3ff;
+  box-shadow: 0 0 0 4px color-mix(in srgb, #6da3ff, transparent 82%);
+}
+
+.dashboard-progress__bar--progress {
+  background: #e3b341;
+}
+
+.dashboard-progress__dot--progress {
+  background: #e3b341;
+  box-shadow: 0 0 0 4px color-mix(in srgb, #e3b341, transparent 82%);
+}
+
+.dashboard-progress__bar--complete {
+  background: #34c978;
+}
+
+.dashboard-progress__dot--complete {
+  background: #34c978;
+  box-shadow: 0 0 0 4px color-mix(in srgb, #34c978, transparent 82%);
+}
+
+.dashboard-progress__bar--high {
+  background: var(--danger);
+}
+
+.dashboard-progress__dot--high {
+  background: var(--danger);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--danger), transparent 82%);
+}
+
+.dashboard-modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  padding-bottom: 58px;
+}
+
+.dashboard-module-card {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.dashboard-module-card__header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.dashboard-module-card__header h2,
+.dashboard-module-card__header p {
+  margin: 0;
+}
+
+.dashboard-module-card__header h2 {
+  font-size: 1rem;
+}
+
+.dashboard-module-card__header p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.dashboard-module-card__metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.dashboard-module-card__metrics div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px;
+  background: var(--surface-2);
+}
+
+.dashboard-module-card__metrics strong {
+  font-size: 1.1rem;
+}
+
+.dashboard-module-card__metrics span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 850;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
 }
 
 .about-page {
@@ -2355,6 +2777,69 @@ body.is-listening .status-dot {
   line-height: 1.5;
 }
 
+.voice-action-field {
+  display: grid;
+  gap: 10px;
+}
+
+.voice-action-field__label {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.voice-action-options {
+  display: grid;
+  gap: 10px;
+}
+
+.voice-action-option {
+  display: grid;
+  grid-template-columns: 20px 24px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 850;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.voice-action-option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.voice-action-option input:checked + .check-row__box {
+  background: var(--accent);
+  box-shadow: inset 0 0 0 4px var(--surface);
+}
+
+.voice-action-option:has(input:checked) {
+  border-color: color-mix(in srgb, var(--accent), var(--line) 28%);
+  background: color-mix(in srgb, var(--surface), var(--accent) 8%);
+}
+
+.voice-action-option__icon {
+  color: var(--muted);
+}
+
+.voice-action-option:has(input:checked) .voice-action-option__icon {
+  color: var(--text);
+}
+
+.voice-action-option > span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .mic-toggle {
   display: inline-flex;
   align-items: center;
@@ -2568,7 +3053,8 @@ body.is-listening .mic-toggle {
 
   .topbar,
   .selection-hero,
-  .workspace-header {
+  .workspace-header,
+  .dashboard-header {
     align-items: stretch;
     flex-direction: column;
   }
@@ -2634,6 +3120,8 @@ body.is-listening .mic-toggle {
 
   .tool-strip,
   .chat-input,
+  .chat-ai-input,
+  .chat-workspace,
   .workspace-grid,
   .kanban-columns {
     grid-template-columns: 1fr;
@@ -2654,6 +3142,8 @@ body.is-listening .mic-toggle {
   }
 
   .diary-hero,
+  .chat-hero,
+  .chat-workspace,
   .diary-actions,
   .diary-modes,
   .diary-grid,
@@ -2661,6 +3151,9 @@ body.is-listening .mic-toggle {
   .kanban-board,
   .about-hero,
   .about-section,
+  .dashboard-stat-grid,
+  .dashboard-progress,
+  .dashboard-modules,
   .profile-hero,
   .profile-grid,
   .plans-hero,
@@ -2674,6 +3167,39 @@ body.is-listening .mic-toggle {
     padding-bottom: 18px;
   }
 
+  .chat-page {
+    gap: 18px;
+    padding-bottom: 18px;
+  }
+
+  .chat-hero {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .chat-hero .button,
+  .chat-ai-input .button {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .chat-ai-panel {
+    min-height: auto;
+  }
+
+  .chat-ai-log {
+    min-height: 360px;
+    max-height: none;
+  }
+
+  .chat-ai-message {
+    max-width: 100%;
+  }
+
+  .chat-control-panel {
+    position: static;
+  }
+
   .about-hero {
     align-items: stretch;
   }
@@ -2685,6 +3211,59 @@ body.is-listening .mic-toggle {
 
   .about-card {
     min-height: auto;
+  }
+
+  .dashboard-header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .dashboard-completion {
+    width: 100%;
+    min-height: 104px;
+  }
+
+  .dashboard-stat-grid,
+  .dashboard-modules {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-progress__panel {
+    padding: 14px;
+  }
+
+  .dashboard-progress__header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .dashboard-progress__header .panel-badge {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .dashboard-progress__row {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+    gap: 10px;
+    min-height: auto;
+  }
+
+  .dashboard-progress__label {
+    width: 100%;
+  }
+
+  .dashboard-progress__value,
+  .dashboard-progress__percent {
+    text-align: left;
+  }
+
+  .dashboard-progress__track {
+    width: 100%;
+  }
+
+  .dashboard-module-card__metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .profile-page {

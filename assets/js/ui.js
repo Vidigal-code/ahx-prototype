@@ -27,12 +27,20 @@ function node(tag, options = {}, children = []) {
 }
 
 function lucideIcon(name, className = "lucide-icon") {
-  return node("iconify-icon", { className, icon: resolveIconName(name), "aria-hidden": "true" });
+  return node("iconify-icon", {
+    className,
+    icon: resolveIconName(name),
+    width: "1em",
+    height: "1em",
+    "aria-hidden": "true"
+  });
 }
 
 function renderLucideIcons() {
   document.querySelectorAll("iconify-icon").forEach((icon) => {
     if (!icon.getAttribute("icon")) icon.setAttribute("icon", resolveIconName("circle"));
+    if (!icon.getAttribute("width")) icon.setAttribute("width", "1em");
+    if (!icon.getAttribute("height")) icon.setAttribute("height", "1em");
   });
 }
 
@@ -238,6 +246,7 @@ function renderVoiceAutomationModal() {
       ]),
       voiceCategoryField(),
       voiceTaskField(),
+      voiceActionField(),
       node("div", { className: "voice-status-card" }, [
         node("div", { className: "diary-title" }, [
           lucideIcon("audio-lines", "lucide-icon"),
@@ -283,6 +292,25 @@ function voiceTaskField() {
     select.append(group);
   });
   return node("label", { className: "field" }, [node("span", { text: t("task") }), selectControl(select)]);
+}
+
+function voiceActionField() {
+  const actions = [
+    { value: "create", label: t("newTask"), icon: "plus", checked: true },
+    { value: "edit", label: t("editTask"), icon: "pencil" },
+    { value: "delete", label: t("deleteTask"), icon: "trash-2" }
+  ];
+  return node("div", { className: "voice-action-field", role: "radiogroup", "aria-label": t("voiceAction") }, [
+    node("span", { className: "voice-action-field__label", text: t("voiceAction") }),
+    node("div", { className: "voice-action-options" }, actions.map((action) =>
+      node("label", { className: "voice-action-option" }, [
+        node("input", { type: "radio", name: "voiceAction", value: action.value, checked: action.checked }),
+        node("span", { className: "check-row__box" }),
+        lucideIcon(action.icon, "lucide-icon voice-action-option__icon"),
+        node("span", { text: action.label })
+      ])
+    ))
+  ]);
 }
 
 function openNotificationModal() {
