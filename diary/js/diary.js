@@ -7,8 +7,7 @@ window.AHX_PAGE_RENDERERS.diary = function renderDiaryPage() {
   return appLayout("diary", node("div", { className: "diary-page" }, [
     node("section", { className: "diary-hero" }, [
       node("div", { className: "section-heading" }, [
-        node("p", { className: "eyebrow", text: t("activeMode") }),
-        node("h1", { text: personalLifeLabel() }),
+        renderDiaryActiveModeControl(),
         node("p", { text: t("diarySubtitle") })
       ]),
       iconTextButton(isKanban ? t("switchToForms") : t("switchToKanban"), isKanban ? "layout-list" : "kanban", "primary", toggleDiaryView, !hasModules)
@@ -30,6 +29,22 @@ window.AHX_PAGE_RENDERERS.diary = function renderDiaryPage() {
 };
 
 
+function renderDiaryActiveModeControl() {
+  const select = node("select", { className: "select", name: "diaryActiveMode", "aria-label": t("activeMode") });
+  AHX_FEATURES.forEach((category) => {
+    select.append(node("option", {
+      value: category.id,
+      text: labelOf(category),
+      selected: category.id === "personal",
+      disabled: category.id !== "personal"
+    }));
+  });
+  return node("label", { className: "diary-active-mode" }, [
+    node("span", { className: "eyebrow", text: `${t("activeMode")}:` }),
+    selectControl(select)
+  ]);
+}
+
 function renderDiaryActions(hasModules = true) {
   return node("section", { className: "diary-actions" }, [
     iconTextButton(t("search"), "search", "ghost", openDiaryGlobalSearchModal),
@@ -40,10 +55,6 @@ function renderDiaryActions(hasModules = true) {
     iconTextButton(t("addTask"), "plus", "primary", () => openDiaryCreateModal(), !hasModules),
     node("input", { type: "file", hidden: true, "data-diary-import-file": "", accept: "application/json", onChange: importDiaryContainers })
   ]);
-}
-
-function personalLifeLabel() {
-  return localizedText(AHX_FEATURES.find((category) => category.id === "personal")?.labels ?? { en: "Personal Life", pt: "Vida Pessoal", es: "Vida Personal" });
 }
 
 function renderDiaryContent(modules, isKanban) {

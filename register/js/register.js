@@ -23,8 +23,10 @@ function renderRegisterForm() {
     selectField(t("goal"), "goal", categoryOptions()),
     node("div", { className: "button-row" }, [
       actionButton(t("createAccount"), "primary"),
-      primaryLink(t("registerWithAuth"), "registerAuth", "button button--ghost"),
       primaryLink(t("login"), "login", "button button--ghost")
+    ]),
+    node("div", { className: "auth-text-links" }, [
+      primaryLink(t("registerWithAuth"), "registerAuth", "text-link")
     ])
   ]);
 }

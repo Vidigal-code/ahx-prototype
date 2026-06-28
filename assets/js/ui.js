@@ -196,8 +196,14 @@ function controlsBar() {
   return node("div", { className: "controls-bar" }, [
     iconButton(t("notifications"), "bell", openNotificationModal),
     iconButton(t("microphone"), "mic", openVoiceAutomationModal),
+    iconButton(t("logout"), "log-out", logoutUser),
     themeButton
   ]);
+}
+
+function logoutUser() {
+  storage.set(AHX_CONFIG.auth.sessionKey, false);
+  location.href = routePath("block");
 }
 
 function renderNotificationModal() {
@@ -263,7 +269,8 @@ function voiceCategoryField() {
 function voiceTaskField() {
   const select = node("select", { name: "voiceTask", className: "select" });
   AHX_FEATURES.forEach((category) => {
-    const group = node("optgroup", { label: labelOf(category) });
+    const groupEnabled = category.id === "personal";
+    const group = node("optgroup", { label: labelOf(category), disabled: !groupEnabled });
     category.items.forEach((item) => {
       const enabled = category.id === "personal" && AHX_PERSONAL_ACTIVE_IDS.includes(item.id);
       group.append(node("option", {
