@@ -734,6 +734,21 @@ function exportDiaryContainerTasks(moduleId) {
   updateStatus(t("exported"));
 }
 
+function exportDiaryTask(itemId) {
+  const item = findDiaryItem(itemId);
+  const module = findDiaryModuleByItem(itemId);
+  if (!item || !module) return;
+  const data = {
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    moduleId: module.id,
+    moduleLabel: localizedText(module.labels),
+    item
+  };
+  downloadJson(data, `aionhex-${module.id}-${item.id}.json`);
+  updateStatus(t("exported"));
+}
+
 function importDiaryContainerTasks(moduleId) {
   return (event) => {
     const file = event.target.files?.[0];

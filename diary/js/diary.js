@@ -99,7 +99,8 @@ function renderDiaryItem(item, isEditing = false) {
     isEditing ? node("div", { className: "diary-item__edit-actions" }, [
       iconButton(t("edit"), "pencil", () => openDiaryEditItem(item.id)),
       iconButton(t("delete"), "trash-2", () => openDiaryDeleteItem(item.id)),
-      iconButton(t("moveTask"), "move-right", () => openDiaryMoveItem(item.id))
+      iconButton(t("moveTask"), "move-right", () => openDiaryMoveItem(item.id)),
+      iconButton(t("exportTasks"), "file-down", () => exportDiaryTask(item.id))
     ]) : null,
     node("div", { className: "diary-item__top" }, [
       node("strong", { text: localizedText(item.title) }),
@@ -163,6 +164,7 @@ function renderDiaryContainerActionBar(module, options = {}, isEditing = false) 
   return node("div", { className: "diary-container__action-shell" }, [
     node("div", { className: "diary-container__action-controls" }, [
       node("div", { className: "diary-container__action-start" }, [
+        iconButton(t("information"), "info", () => openDiaryInfo(module.id)),
         iconButton(isHidden ? t("showIconButtons") : t("hideIconButtons"), isHidden ? "eye" : "eye-off", () => toggleDiaryContainerActions(module.id))
       ]),
       node("div", { className: "diary-container__action-nav" }, [
@@ -170,6 +172,7 @@ function renderDiaryContainerActionBar(module, options = {}, isEditing = false) 
         iconButton(t("next"), "chevron-right", () => changeDiaryContainerActionPage(module.id, 1, actions.length), isHidden || page >= pageCount)
       ]),
       node("div", { className: "diary-container__action-end" }, [
+        iconButton(t("filter"), "filter", () => openDiaryFilter(module.id)),
         isFullscreen ? iconButton(t("close"), "x", closeDiaryFullscreen) : iconButton(t("fullscreen"), "maximize-2", () => openDiaryFullscreen(module.id))
       ])
     ]),
@@ -179,12 +182,10 @@ function renderDiaryContainerActionBar(module, options = {}, isEditing = false) 
 
 function diaryContainerActionButtons(module, options = {}, isEditing = false) {
   return [
-    iconButton(t("information"), "info", () => openDiaryInfo(module.id)),
-    iconButton(isEditing ? t("finishEditing") : t("editMode"), isEditing ? "check" : "pencil", () => toggleDiaryModuleEditing(module.id)),
     iconButton(t("addTask"), "plus", () => openDiaryCreateModal(module.id), false, "primary"),
+    iconButton(isEditing ? t("finishEditing") : t("editMode"), isEditing ? "check" : "pencil", () => toggleDiaryModuleEditing(module.id)),
     iconButton(t("importTasks"), "file-up", () => openDiaryContainerImport(module.id)),
-    iconButton(t("exportTasks"), "file-down", () => exportDiaryContainerTasks(module.id)),
-    iconButton(t("filter"), "filter", () => openDiaryFilter(module.id))
+    iconButton(t("exportTasks"), "file-down", () => exportDiaryContainerTasks(module.id))
   ];
 }
 

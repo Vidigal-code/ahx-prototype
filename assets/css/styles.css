@@ -33,25 +33,25 @@
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --bg: #f1f2f4;
+  --bg: #f5f7fb;
   --surface: #ffffff;
-  --surface-2: #e7e9ed;
-  --text: #151515;
-  --muted: #686a70;
-  --line: rgba(0, 0, 0, 0.12);
-  --line-strong: rgba(0, 0, 0, 0.22);
-  --accent: #151515;
+  --surface-2: #eef3f8;
+  --text: #172033;
+  --muted: #617087;
+  --line: rgba(23, 32, 51, 0.11);
+  --line-strong: rgba(23, 32, 51, 0.22);
+  --accent: #2454d6;
   --accent-text: #ffffff;
-  --field-bg: #ffffff;
-  --field-text: #151515;
-  --field-muted: #686a70;
-  --field-border: rgba(0, 0, 0, 0.16);
-  --field-shadow: rgba(0, 0, 0, 0.08);
-  --focus: #4e555f;
-  --scrollbar-track: #e7e9ed;
-  --scrollbar-thumb: #a7abb3;
-  --scrollbar-thumb-hover: #151515;
-  --shadow: 0 24px 70px rgba(26, 26, 26, 0.12);
+  --field-bg: #fbfdff;
+  --field-text: #172033;
+  --field-muted: #6a7890;
+  --field-border: rgba(36, 84, 214, 0.18);
+  --field-shadow: rgba(36, 84, 214, 0.08);
+  --focus: #2454d6;
+  --scrollbar-track: #edf2f8;
+  --scrollbar-thumb: #bac6d7;
+  --scrollbar-thumb-hover: #2454d6;
+  --shadow: 0 24px 70px rgba(38, 57, 91, 0.14);
 }
 
 .lucide-icon,
@@ -1818,10 +1818,18 @@ body.is-listening .status-dot {
 .diary-container {
   grid-template-rows: auto 1fr auto;
   min-height: 560px;
+  border-color: color-mix(in srgb, var(--line), var(--accent) 18%);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface), var(--accent) 5%), var(--surface) 180px),
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--accent), transparent 88%), transparent 260px);
 }
 
 .kanban-module {
   min-height: 560px;
+  border-color: color-mix(in srgb, var(--line), var(--accent) 16%);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface), var(--accent) 4%), var(--surface) 220px),
+    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--accent), transparent 90%), transparent 280px);
 }
 
 .diary-container > .panel__header,
@@ -1858,7 +1866,7 @@ body.is-listening .status-dot {
 }
 
 .diary-container__action-controls {
-  grid-template-columns: var(--button-height) 1fr var(--button-height);
+  grid-template-columns: calc((var(--button-height) * 2) + 8px) 1fr calc((var(--button-height) * 2) + 8px);
   align-items: center;
 }
 
@@ -1867,6 +1875,7 @@ body.is-listening .status-dot {
 .diary-container__action-end {
   display: flex;
   align-items: center;
+  gap: 8px;
   min-width: 0;
 }
 
@@ -1876,7 +1885,6 @@ body.is-listening .status-dot {
 
 .diary-container__action-nav {
   justify-content: center;
-  gap: 8px;
 }
 
 .diary-container__action-end {
@@ -1912,24 +1920,26 @@ body.is-listening .status-dot {
   display: grid;
   gap: 10px;
   min-height: 160px;
-  border: 1px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--line), var(--text) 5%);
   border-left: 4px solid var(--muted);
   border-radius: var(--radius);
   padding: 12px;
-  background: var(--surface-2);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface-2), var(--text) 3%), var(--surface-2));
   overflow: hidden;
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--bg), transparent 76%);
 }
 
 .diary-item--planned {
-  border-left-color: #89a8ff;
+  border-left-color: #6da3ff;
 }
 
 .diary-item--progress {
-  border-left-color: #e9c46a;
+  border-left-color: #e3b341;
 }
 
 .diary-item--complete {
-  border-left-color: #5bd48a;
+  border-left-color: #34c978;
 }
 
 .diary-item__top {
@@ -2059,6 +2069,13 @@ body.is-listening .status-dot {
 .kanban-board {
   display: grid;
   gap: 16px;
+  border: 1px solid color-mix(in srgb, var(--line), var(--accent) 12%);
+  border-radius: var(--radius);
+  padding: 14px;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface-2), transparent 16%), transparent),
+    color-mix(in srgb, var(--surface), var(--bg) 20%);
+  box-shadow: var(--shadow);
 }
 
 .kanban-columns {
@@ -2077,10 +2094,12 @@ body.is-listening .status-dot {
   gap: 10px;
   min-width: 220px;
   min-height: 440px;
-  border: 1px solid var(--line);
+  border: 1px solid color-mix(in srgb, var(--line), var(--accent) 14%);
   border-radius: var(--radius);
   padding: 12px;
-  background: color-mix(in srgb, var(--surface-2), transparent 20%);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--surface-2), var(--accent) 5%), var(--surface-2)),
+    color-mix(in srgb, var(--surface), var(--bg) 12%);
 }
 
 .kanban-column h3 {
@@ -2794,7 +2813,7 @@ body.is-listening .mic-toggle {
   }
 
   .diary-container__action-controls {
-    grid-template-columns: var(--button-height) minmax(0, auto) var(--button-height);
+    grid-template-columns: calc((var(--button-height) * 2) + 8px) minmax(0, auto) calc((var(--button-height) * 2) + 8px);
     justify-content: center;
   }
 
@@ -2891,17 +2910,27 @@ body.is-listening .mic-toggle {
   }
 
   .filter-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
+    background: var(--surface);
     padding: 0;
+    overscroll-behavior: contain;
   }
 
   .container-fullscreen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
     width: 100vw;
     height: 100dvh;
     overflow: hidden;
+    background: var(--surface);
     padding: 0;
+    overscroll-behavior: contain;
   }
 
   .container-fullscreen__panel {
@@ -2909,6 +2938,8 @@ body.is-listening .mic-toggle {
     height: 100dvh;
     min-height: 100dvh;
     overflow: auto;
+    background: var(--surface);
+    overscroll-behavior: contain;
   }
 
   .container-fullscreen .diary-container {
@@ -2932,7 +2963,9 @@ body.is-listening .mic-toggle {
     border-radius: 0;
     overflow: auto;
     padding: 18px;
+    background: var(--surface);
     justify-items: stretch;
+    overscroll-behavior: contain;
   }
 
   .filter-modal__panel > .field,
