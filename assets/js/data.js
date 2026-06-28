@@ -1,0 +1,1356 @@
+const AHX_CONFIG = {
+  brand: {
+    name: "AionHex",
+    shortName: "AHX",
+    icon: "icon-not-backgroud.png",
+    iconLight: "icon-not-backgroud-dark.png",
+    banner: "banneroficial2.png",
+    bannerAlt: "banner2.png"
+  },
+  routes: {
+    block: "block/",
+    login: "login/",
+    register: "register/",
+    registerAuth: "register/auth/",
+    selection: "register/selection/",
+    home: "home/",
+    diary: "diary/"
+  },
+  navigation: [
+    { id: "login", route: "login", labelKey: "login" },
+    { id: "register", route: "register", labelKey: "register" },
+    { id: "registerAuth", route: "registerAuth", labelKey: "registerAuth" },
+    { id: "selection", route: "selection", labelKey: "selection" },
+    { id: "home", route: "home", labelKey: "home" },
+    { id: "diary", route: "diary", labelKey: "diary" }
+  ],
+  defaultLanguage: "en",
+  auth: {
+    passwordSha256: "30480d516fde70b11e5f6371fec60cc7b93c2516c97627683eb006d850b2c67c",
+    sessionKey: "ahx_auth_unlocked",
+    publicPages: ["block"]
+  },
+  formDefaults: {
+    namePlaceholder: "Alex Hex",
+    emailPlaceholder: "you@company.com",
+    passwordPlaceholder: "********"
+  },
+  languages: {
+    en: { menu: { pt: "Portuguese", en: "English", es: "Spanish" } },
+    pt: { menu: { pt: "Português", en: "Inglês", es: "Espanhol" } },
+    es: { menu: { pt: "Portugués", en: "Inglés", es: "Español" } }
+  }
+};
+
+const AHX_AUTH_PROVIDERS = [
+  { key: "authGoogle", icon: "simple-icons:google" },
+  { key: "authApple", icon: "simple-icons:apple" },
+  { key: "authMicrosoft", icon: "simple-icons:microsoft" },
+  { key: "authGithub", icon: "simple-icons:github" },
+  { key: "authFacebook", icon: "simple-icons:facebook" },
+  { key: "authX", icon: "simple-icons:x" },
+  { key: "authLinkedin", icon: "simple-icons:linkedin" },
+  { key: "authDiscord", icon: "simple-icons:discord" },
+  { key: "authSlack", icon: "simple-icons:slack" },
+  { key: "authEmail", icon: "mail" }
+];
+
+const AHX_TRANSLATIONS = {
+  en: {
+    appName: "AionHex",
+    taglineStrong: "Master your time.",
+    tagline: "Make a pact with your productivity.",
+    loginTitle: "Welcome back",
+    loginSubtitle: "Access your AI command center.",
+    blockTitle: "Protected access",
+    blockSubtitle: "Enter the local password to unlock this site.",
+    unlockSite: "Unlock site",
+    registerTitle: "Create your account",
+    registerSubtitle: "Choose your profile and personalize your assistant.",
+    registerAuth: "Auth",
+    registerAuthTitle: "Choose an authentication provider",
+    registerAuthSubtitle: "Create your AionHex account with the provider you already trust.",
+    registerAuthText: "You can connect with a social, work, developer, or email provider and continue to personalization.",
+    registerAuthCta: "Use auth provider",
+    registerWithAuth: "Register with providers",
+    continueWith: "Continue with",
+    authProviderNote: "Prototype flow: selecting a provider continues to the next step.",
+    authEmail: "Email",
+    authGoogle: "Google",
+    authApple: "Apple",
+    authMicrosoft: "Microsoft",
+    authGithub: "GitHub",
+    authFacebook: "Facebook",
+    authX: "X",
+    authLinkedin: "LinkedIn",
+    authDiscord: "Discord",
+    authSlack: "Slack",
+    selectionTitle: "Choose what AionHex will help you with",
+    selectionSubtitle: "Select the capabilities that match your routine.",
+    homeTitle: "AI workspace",
+    homeSubtitle: "Plan, write, search, automate, and track work in one place.",
+    email: "Email",
+    password: "Password",
+    name: "Name",
+    company: "Company",
+    role: "Role",
+    goal: "Main goal",
+    login: "Login",
+    register: "Register",
+    home: "Home",
+    diary: "Diary",
+    selection: "Selection",
+    menu: "Menu",
+    closeMenu: "Close menu",
+    createAccount: "Create account",
+    continue: "Continue",
+    logout: "Logout",
+    theme: "Theme",
+    language: "Language",
+    notifications: "Notifications",
+    noNotifications: "No notifications yet.",
+    voiceAutomation: "Voice automation",
+    voiceAutomationContext: "Voice commands will create automations for the enabled personal life workflows.",
+    task: "Task",
+    voiceStatus: "Voice status",
+    light: "Light",
+    dark: "Dark",
+    search: "Search",
+    searchPlaceholder: "Search features, prompts, or notes",
+    import: "Import",
+    export: "Export",
+    importTasks: "Import tasks",
+    exportTasks: "Export tasks",
+    microphone: "Microphone",
+    formTitle: "New request",
+    requestType: "Request type",
+    priority: "Priority",
+    deadline: "Deadline",
+    description: "Description",
+    descriptionPlaceholder: "Describe what you need AionHex to do.",
+    submit: "Send request",
+    chatTitle: "AI chat",
+    chatPlaceholder: "Ask AionHex anything...",
+    send: "Send",
+    low: "Low",
+    medium: "Medium",
+    high: "High",
+    sidebarTitle: "Navigation",
+    dashboard: "Dashboard",
+    features: "Features",
+    requests: "Requests",
+    files: "Files",
+    settings: "Settings",
+    assistantGreeting: "I can help you organize tasks, draft content, review code, and turn notes into action.",
+    selectedCount: "selected",
+    saveSelection: "Save selection",
+    allCategories: "All categories",
+    quickActions: "Quick actions",
+    statusReady: "Ready",
+    authBlocked: "Access blocked. Check the password.",
+    authUnlocked: "Access unlocked.",
+    imported: "Imported prototype data.",
+    exported: "Exported prototype data.",
+    micOn: "Listening...",
+    micOff: "Microphone off",
+    category: "Category",
+    footerCopy: "AionHex prototype for AI productivity workflows.",
+    footerProduct: "Product",
+    footerLegal: "Prototype",
+    footerPrivacy: "Privacy",
+    footerTerms: "Terms",
+    diaryTitle: "Personal diary",
+    diarySubtitle: "Travel planning is active. The other personal modes stay organized here as prototype containers.",
+    diaryEmptyTitle: "No visible containers",
+    diaryEmptyText: "Use the mode cards above to show a container again.",
+    diarySettingsTitle: "Diary settings",
+    visibleContainers: "Visible containers",
+    containerHierarchy: "Container hierarchy",
+    visible: "Visible",
+    moveUp: "Move up",
+    moveDown: "Move down",
+    fullscreen: "Fullscreen",
+    activeMode: "Active mode",
+    disabledMode: "Disabled mode",
+    disabled: "Disabled",
+    addTask: "Add task",
+    edit: "Edit",
+    editMode: "Edit mode",
+    finishEditing: "Finish editing",
+    editTask: "Edit task",
+    delete: "Delete",
+    deleteTask: "Delete task",
+    moveTask: "Move task",
+    moveToContainer: "Move to container",
+    confirmMoveText: "Confirm moving this task to another container.",
+    deleteContainer: "Delete container",
+    selectContainerToDelete: "Select a container to delete",
+    confirmDeleteTitle: "Confirm deletion",
+    confirmDeleteText: "Are you sure you want to delete this container from the prototype?",
+    confirmDeleteItemText: "Are you sure you want to delete this task from the prototype?",
+    confirm: "Confirm",
+    cancel: "Cancel",
+    saveChanges: "Save changes",
+    taskTitle: "Task title",
+    taskDetails: "Task details",
+    selectMode: "Select mode",
+    switchToKanban: "Kanban view",
+    switchToForms: "Container view",
+    filter: "Filter",
+    globalSearch: "Global search",
+    globalSearchPlaceholder: "Search across all visible containers",
+    clearFilters: "Clear filters",
+    applyFilters: "Apply filters",
+    close: "Close",
+    status: "Status",
+    allStatuses: "All statuses",
+    priorityFilter: "Priority",
+    allPriorities: "All priorities",
+    information: "Information",
+    containerActions: "Container actions",
+    hideIconButtons: "Hide icon buttons",
+    showIconButtons: "Show icon buttons",
+    totalTasks: "Total tasks",
+    completedTasks: "Completed",
+    progressTasks: "In progress",
+    plannedTasks: "Planned",
+    highPriority: "High priority",
+    mediumPriority: "Medium priority",
+    lowPriority: "Low priority",
+    completionRate: "Completion",
+    previous: "Previous",
+    next: "Next",
+    page: "Page",
+    planned: "Planned",
+    inProgress: "In progress",
+    complete: "Complete",
+    owner: "Owner",
+    date: "Date",
+    tag: "Tag",
+    lockedModeMessage: "Visible in the platform, disabled in this prototype."
+  },
+  pt: {
+    appName: "AionHex",
+    taglineStrong: "Domine seu tempo.",
+    tagline: "Faça um pacto com sua produtividade.",
+    loginTitle: "Bem-vindo de volta",
+    loginSubtitle: "Acesse seu centro de comando de IA.",
+    blockTitle: "Acesso protegido",
+    blockSubtitle: "Digite a senha local para liberar este site.",
+    unlockSite: "Liberar site",
+    registerTitle: "Crie sua conta",
+    registerSubtitle: "Escolha seu perfil e personalize seu assistente.",
+    registerAuth: "Auth",
+    registerAuthTitle: "Escolha um provedor de autenticação",
+    registerAuthSubtitle: "Crie sua conta AionHex com o provedor em que você já confia.",
+    registerAuthText: "Você pode conectar com um provedor social, profissional, de desenvolvedor ou e-mail e continuar para a personalização.",
+    registerAuthCta: "Usar provedor de auth",
+    registerWithAuth: "Cadastrar com provedores",
+    continueWith: "Continuar com",
+    authProviderNote: "Fluxo de protótipo: selecionar um provedor continua para a próxima etapa.",
+    authEmail: "E-mail",
+    authGoogle: "Google",
+    authApple: "Apple",
+    authMicrosoft: "Microsoft",
+    authGithub: "GitHub",
+    authFacebook: "Facebook",
+    authX: "X",
+    authLinkedin: "LinkedIn",
+    authDiscord: "Discord",
+    authSlack: "Slack",
+    selectionTitle: "Escolha como o AionHex vai ajudar você",
+    selectionSubtitle: "Selecione as funcionalidades que combinam com sua rotina.",
+    homeTitle: "Área de trabalho de IA",
+    homeSubtitle: "Planeje, escreva, pesquise, automatize e acompanhe tudo em um só lugar.",
+    email: "E-mail",
+    password: "Senha",
+    name: "Nome",
+    company: "Empresa",
+    role: "Função",
+    goal: "Objetivo principal",
+    login: "Entrar",
+    register: "Cadastrar",
+    home: "Início",
+    diary: "Diário",
+    selection: "Seleção",
+    menu: "Menu",
+    closeMenu: "Fechar menu",
+    createAccount: "Criar conta",
+    continue: "Continuar",
+    logout: "Sair",
+    theme: "Tema",
+    language: "Idioma",
+    notifications: "Notificações",
+    noNotifications: "Nenhuma notificação ainda.",
+    voiceAutomation: "Automação por voz",
+    voiceAutomationContext: "Comandos de voz vão criar automações para os fluxos habilitados de vida pessoal.",
+    task: "Tarefa",
+    voiceStatus: "Status do microfone",
+    light: "Claro",
+    dark: "Escuro",
+    search: "Buscar",
+    searchPlaceholder: "Buscar funcionalidades, prompts ou notas",
+    import: "Importar",
+    export: "Exportar",
+    importTasks: "Importar tarefas",
+    exportTasks: "Exportar tarefas",
+    microphone: "Microfone",
+    formTitle: "Nova solicitação",
+    requestType: "Tipo de solicitação",
+    priority: "Prioridade",
+    deadline: "Prazo",
+    description: "Descrição",
+    descriptionPlaceholder: "Descreva o que você precisa que o AionHex faça.",
+    submit: "Enviar solicitação",
+    chatTitle: "Chat de IA",
+    chatPlaceholder: "Pergunte qualquer coisa ao AionHex...",
+    send: "Enviar",
+    low: "Baixa",
+    medium: "Média",
+    high: "Alta",
+    sidebarTitle: "Navegação",
+    dashboard: "Painel",
+    features: "Funcionalidades",
+    requests: "Solicitações",
+    files: "Arquivos",
+    settings: "Configurações",
+    assistantGreeting: "Posso ajudar a organizar tarefas, escrever conteúdo, revisar código e transformar notas em ações.",
+    selectedCount: "selecionadas",
+    saveSelection: "Salvar seleção",
+    allCategories: "Todas as categorias",
+    quickActions: "Ações rápidas",
+    statusReady: "Pronto",
+    authBlocked: "Acesso bloqueado. Verifique a senha.",
+    authUnlocked: "Acesso liberado.",
+    imported: "Dados do protótipo importados.",
+    exported: "Dados do protótipo exportados.",
+    micOn: "Ouvindo...",
+    micOff: "Microfone desligado",
+    category: "Categoria",
+    footerCopy: "Protótipo AionHex para fluxos de produtividade com IA.",
+    footerProduct: "Produto",
+    footerLegal: "Protótipo",
+    footerPrivacy: "Privacidade",
+    footerTerms: "Termos",
+    diaryTitle: "Diário pessoal",
+    diarySubtitle: "Planejar viagens está ativo. Os outros modos pessoais ficam organizados aqui como containers do protótipo.",
+    diaryEmptyTitle: "Nenhum container visível",
+    diaryEmptyText: "Use os cards de modo acima para mostrar um container novamente.",
+    diarySettingsTitle: "Configurações do diário",
+    visibleContainers: "Containers visíveis",
+    containerHierarchy: "Hierarquia dos containers",
+    visible: "Visível",
+    moveUp: "Mover para cima",
+    moveDown: "Mover para baixo",
+    fullscreen: "Tela cheia",
+    activeMode: "Modo ativo",
+    disabledMode: "Modo desabilitado",
+    disabled: "Desabilitado",
+    addTask: "Adicionar tarefa",
+    edit: "Editar",
+    editMode: "Modo edição",
+    finishEditing: "Finalizar edição",
+    editTask: "Editar tarefa",
+    delete: "Excluir",
+    deleteTask: "Excluir tarefa",
+    moveTask: "Mover tarefa",
+    moveToContainer: "Mover para container",
+    confirmMoveText: "Confirme a movimentação desta tarefa para outro container.",
+    deleteContainer: "Excluir container",
+    selectContainerToDelete: "Selecione um container para excluir",
+    confirmDeleteTitle: "Confirmar exclusão",
+    confirmDeleteText: "Tem certeza que deseja excluir este container do protótipo?",
+    confirmDeleteItemText: "Tem certeza que deseja excluir esta tarefa do protótipo?",
+    confirm: "Confirmar",
+    cancel: "Cancelar",
+    saveChanges: "Salvar alterações",
+    taskTitle: "Título da tarefa",
+    taskDetails: "Detalhes da tarefa",
+    selectMode: "Selecionar modo",
+    switchToKanban: "Visualizar kanban",
+    switchToForms: "Visualizar containers",
+    filter: "Filtrar",
+    globalSearch: "Busca global",
+    globalSearchPlaceholder: "Buscar em todos os containers visíveis",
+    clearFilters: "Limpar filtros",
+    applyFilters: "Aplicar filtros",
+    close: "Fechar",
+    status: "Status",
+    allStatuses: "Todos os status",
+    priorityFilter: "Prioridade",
+    allPriorities: "Todas as prioridades",
+    information: "Informação",
+    containerActions: "Ações do container",
+    hideIconButtons: "Ocultar botões de ícone",
+    showIconButtons: "Mostrar botões de ícone",
+    totalTasks: "Total de tarefas",
+    completedTasks: "Concluídas",
+    progressTasks: "Em andamento",
+    plannedTasks: "Planejadas",
+    highPriority: "Alta prioridade",
+    mediumPriority: "Média prioridade",
+    lowPriority: "Baixa prioridade",
+    completionRate: "Conclusão",
+    previous: "Anterior",
+    next: "Próxima",
+    page: "Página",
+    planned: "Planejado",
+    inProgress: "Em andamento",
+    complete: "Concluído",
+    owner: "Responsável",
+    date: "Data",
+    tag: "Etiqueta",
+    lockedModeMessage: "Visível na plataforma, desabilitado neste protótipo."
+  },
+  es: {
+    appName: "AionHex",
+    taglineStrong: "Domina tu tiempo.",
+    tagline: "Haz un pacto con tu productividad.",
+    loginTitle: "Bienvenido de nuevo",
+    loginSubtitle: "Accede a tu centro de comando de IA.",
+    blockTitle: "Acceso protegido",
+    blockSubtitle: "Escribe la contraseña local para desbloquear este sitio.",
+    unlockSite: "Desbloquear sitio",
+    registerTitle: "Crea tu cuenta",
+    registerSubtitle: "Elige tu perfil y personaliza tu asistente.",
+    registerAuth: "Auth",
+    registerAuthTitle: "Elige un proveedor de autenticación",
+    registerAuthSubtitle: "Crea tu cuenta AionHex con el proveedor en el que ya confías.",
+    registerAuthText: "Puedes conectar con un proveedor social, laboral, de desarrollador o correo y continuar con la personalización.",
+    registerAuthCta: "Usar proveedor de auth",
+    registerWithAuth: "Registrarse con proveedores",
+    continueWith: "Continuar con",
+    authProviderNote: "Flujo de prototipo: seleccionar un proveedor continúa al siguiente paso.",
+    authEmail: "Correo",
+    authGoogle: "Google",
+    authApple: "Apple",
+    authMicrosoft: "Microsoft",
+    authGithub: "GitHub",
+    authFacebook: "Facebook",
+    authX: "X",
+    authLinkedin: "LinkedIn",
+    authDiscord: "Discord",
+    authSlack: "Slack",
+    selectionTitle: "Elige cómo AionHex te ayudará",
+    selectionSubtitle: "Selecciona las funciones que encajan con tu rutina.",
+    homeTitle: "Espacio de trabajo de IA",
+    homeSubtitle: "Planifica, escribe, investiga, automatiza y controla todo en un solo lugar.",
+    email: "Correo",
+    password: "Contraseña",
+    name: "Nombre",
+    company: "Empresa",
+    role: "Rol",
+    goal: "Objetivo principal",
+    login: "Iniciar sesión",
+    register: "Registrarse",
+    home: "Inicio",
+    diary: "Diario",
+    selection: "Selección",
+    menu: "Menú",
+    closeMenu: "Cerrar menú",
+    createAccount: "Crear cuenta",
+    continue: "Continuar",
+    logout: "Salir",
+    theme: "Tema",
+    language: "Idioma",
+    notifications: "Notificaciones",
+    noNotifications: "Sin notificaciones todavía.",
+    voiceAutomation: "Automatización por voz",
+    voiceAutomationContext: "Los comandos de voz crearán automatizaciones para los flujos habilitados de vida personal.",
+    task: "Tarea",
+    voiceStatus: "Estado del micrófono",
+    light: "Claro",
+    dark: "Oscuro",
+    search: "Buscar",
+    searchPlaceholder: "Buscar funciones, prompts o notas",
+    import: "Importar",
+    export: "Exportar",
+    importTasks: "Importar tareas",
+    exportTasks: "Exportar tareas",
+    microphone: "Micrófono",
+    formTitle: "Nueva solicitud",
+    requestType: "Tipo de solicitud",
+    priority: "Prioridad",
+    deadline: "Fecha límite",
+    description: "Descripción",
+    descriptionPlaceholder: "Describe lo que necesitas que AionHex haga.",
+    submit: "Enviar solicitud",
+    chatTitle: "Chat de IA",
+    chatPlaceholder: "Pregunta cualquier cosa a AionHex...",
+    send: "Enviar",
+    low: "Baja",
+    medium: "Media",
+    high: "Alta",
+    sidebarTitle: "Navegación",
+    dashboard: "Panel",
+    features: "Funciones",
+    requests: "Solicitudes",
+    files: "Archivos",
+    settings: "Ajustes",
+    assistantGreeting: "Puedo ayudarte a organizar tareas, escribir contenido, revisar código y convertir notas en acciones.",
+    selectedCount: "seleccionadas",
+    saveSelection: "Guardar selección",
+    allCategories: "Todas las categorías",
+    quickActions: "Acciones rápidas",
+    statusReady: "Listo",
+    authBlocked: "Acceso bloqueado. Revisa la contraseña.",
+    authUnlocked: "Acceso liberado.",
+    imported: "Datos del prototipo importados.",
+    exported: "Datos del prototipo exportados.",
+    micOn: "Escuchando...",
+    micOff: "Micrófono apagado",
+    category: "Categoría",
+    footerCopy: "Prototipo AionHex para flujos de productividad con IA.",
+    footerProduct: "Producto",
+    footerLegal: "Prototipo",
+    footerPrivacy: "Privacidad",
+    footerTerms: "Términos",
+    diaryTitle: "Diario personal",
+    diarySubtitle: "Planificar viajes está activo. Los otros modos personales quedan organizados aquí como contenedores del prototipo.",
+    diaryEmptyTitle: "Ningún contenedor visible",
+    diaryEmptyText: "Usa las tarjetas de modo de arriba para mostrar un contenedor nuevamente.",
+    diarySettingsTitle: "Configuración del diario",
+    visibleContainers: "Contenedores visibles",
+    containerHierarchy: "Jerarquía de contenedores",
+    visible: "Visible",
+    moveUp: "Mover arriba",
+    moveDown: "Mover abajo",
+    fullscreen: "Pantalla completa",
+    activeMode: "Modo activo",
+    disabledMode: "Modo deshabilitado",
+    disabled: "Deshabilitado",
+    addTask: "Agregar tarea",
+    edit: "Editar",
+    editMode: "Modo edición",
+    finishEditing: "Finalizar edición",
+    editTask: "Editar tarea",
+    delete: "Eliminar",
+    deleteTask: "Eliminar tarea",
+    moveTask: "Mover tarea",
+    moveToContainer: "Mover a contenedor",
+    confirmMoveText: "Confirma mover esta tarea a otro contenedor.",
+    deleteContainer: "Eliminar contenedor",
+    selectContainerToDelete: "Selecciona un contenedor para eliminar",
+    confirmDeleteTitle: "Confirmar eliminación",
+    confirmDeleteText: "¿Seguro que deseas eliminar este contenedor del prototipo?",
+    confirmDeleteItemText: "¿Seguro que deseas eliminar esta tarea del prototipo?",
+    confirm: "Confirmar",
+    cancel: "Cancelar",
+    saveChanges: "Guardar cambios",
+    taskTitle: "Título de la tarea",
+    taskDetails: "Detalles de la tarea",
+    selectMode: "Seleccionar modo",
+    switchToKanban: "Vista kanban",
+    switchToForms: "Vista de contenedores",
+    filter: "Filtrar",
+    globalSearch: "Búsqueda global",
+    globalSearchPlaceholder: "Buscar en todos los contenedores visibles",
+    clearFilters: "Limpiar filtros",
+    applyFilters: "Aplicar filtros",
+    close: "Cerrar",
+    status: "Estado",
+    allStatuses: "Todos los estados",
+    priorityFilter: "Prioridad",
+    allPriorities: "Todas las prioridades",
+    information: "Información",
+    containerActions: "Acciones del contenedor",
+    hideIconButtons: "Ocultar botones de icono",
+    showIconButtons: "Mostrar botones de icono",
+    totalTasks: "Total de tareas",
+    completedTasks: "Completadas",
+    progressTasks: "En progreso",
+    plannedTasks: "Planificadas",
+    highPriority: "Alta prioridad",
+    mediumPriority: "Media prioridad",
+    lowPriority: "Baja prioridad",
+    completionRate: "Finalización",
+    previous: "Anterior",
+    next: "Siguiente",
+    page: "Página",
+    planned: "Planificado",
+    inProgress: "En progreso",
+    complete: "Completado",
+    owner: "Responsable",
+    date: "Fecha",
+    tag: "Etiqueta",
+    lockedModeMessage: "Visible en la plataforma, deshabilitado en este prototipo."
+  }
+};
+
+const AHX_FEATURES = [
+  {
+    id: "work",
+    icon: "✅",
+    labels: { en: "Work", pt: "Trabalho", es: "Trabajo" },
+    items: [
+      { id: "manage_tasks", icon: "✅", labels: { en: "Manage tasks", pt: "Gerenciar tarefas", es: "Gestionar tareas" } },
+      { id: "create_documents", icon: "▣", labels: { en: "Create documents", pt: "Criar documentos", es: "Crear documentos" } },
+      { id: "summarize_meetings", icon: "≡", labels: { en: "Summarize meetings", pt: "Resumir reuniões", es: "Resumir reuniones" } },
+      { id: "write_emails", icon: "✉", labels: { en: "Write emails", pt: "Escrever e-mails", es: "Escribir correos" } },
+      { id: "research", icon: "⌕", labels: { en: "Do research", pt: "Fazer pesquisas", es: "Investigar" } },
+      { id: "presentations", icon: "◫", labels: { en: "Create presentations", pt: "Criar apresentações", es: "Crear presentaciones" } },
+      { id: "plan_projects", icon: "▦", labels: { en: "Plan projects", pt: "Planejar projetos", es: "Planificar proyectos" } },
+      { id: "delegate_tasks", icon: "↗", labels: { en: "Delegate tasks", pt: "Delegar tarefas", es: "Delegar tareas" } },
+      { id: "track_deadlines", icon: "⏰", labels: { en: "Track deadlines", pt: "Acompanhar prazos", es: "Controlar plazos" } }
+    ]
+  },
+  {
+    id: "development",
+    icon: "⌘",
+    labels: { en: "Development", pt: "Desenvolvimento", es: "Desarrollo" },
+    items: [
+      { id: "generate_code", icon: "</>", labels: { en: "Generate code", pt: "Gerar código", es: "Generar código" } },
+      { id: "fix_bugs", icon: "◇", labels: { en: "Fix bugs", pt: "Corrigir bugs", es: "Corregir errores" } },
+      { id: "explain_errors", icon: "❗", labels: { en: "Explain errors", pt: "Explicar erros", es: "Explicar errores" } },
+      { id: "review_code", icon: "☑", labels: { en: "Review code", pt: "Revisar código", es: "Revisar código" } },
+      { id: "generate_tests", icon: "✓", labels: { en: "Generate tests", pt: "Gerar testes", es: "Generar pruebas" } },
+      { id: "document_apis", icon: "API", labels: { en: "Document APIs", pt: "Documentar APIs", es: "Documentar APIs" } },
+      { id: "plan_architecture", icon: "⌂", labels: { en: "Plan architecture", pt: "Planejar arquitetura", es: "Planificar arquitectura" } },
+      { id: "github", icon: "git", labels: { en: "Integrate with GitHub", pt: "Integrar com GitHub", es: "Integrar con GitHub" } },
+      { id: "roadmap", icon: "▤", labels: { en: "Create roadmap", pt: "Criar roadmap", es: "Crear roadmap" } },
+      { id: "logs", icon: "☰", labels: { en: "Analyze logs", pt: "Analisar logs", es: "Analizar logs" } }
+    ]
+  },
+  {
+    id: "studies",
+    icon: "✎",
+    labels: { en: "Studies", pt: "Estudos", es: "Estudios" },
+    items: [
+      { id: "study_plan", icon: "▥", labels: { en: "Create study plan", pt: "Criar plano de estudos", es: "Crear plan de estudios" } },
+      { id: "explain_subjects", icon: "?", labels: { en: "Explain subjects", pt: "Explicar matérias", es: "Explicar materias" } },
+      { id: "solve_exercises", icon: "✍", labels: { en: "Solve exercises", pt: "Resolver exercícios", es: "Resolver ejercicios" } },
+      { id: "mock_tests", icon: "□", labels: { en: "Create mock tests", pt: "Criar simulados", es: "Crear simulacros" } },
+      { id: "correct_answers", icon: "✅", labels: { en: "Correct answers", pt: "Corrigir respostas", es: "Corregir respuestas" } },
+      { id: "summaries", icon: "≡", labels: { en: "Generate summaries", pt: "Gerar resumos", es: "Generar resúmenes" } },
+      { id: "flashcards", icon: "▭", labels: { en: "Create flashcards", pt: "Criar flashcards", es: "Crear tarjetas" } },
+      { id: "progress", icon: "↟", labels: { en: "Track progress", pt: "Acompanhar evolução", es: "Seguir evolución" } }
+    ]
+  },
+  {
+    id: "finance",
+    icon: "$",
+    labels: { en: "Finance", pt: "Finanças", es: "Finanzas" },
+    items: [
+      { id: "expenses", icon: "-", labels: { en: "Record expenses", pt: "Registrar despesas", es: "Registrar gastos" } },
+      { id: "budget", icon: "▧", labels: { en: "Make a budget", pt: "Fazer orçamento", es: "Hacer presupuesto" } },
+      { id: "spending", icon: "⌁", labels: { en: "Analyze spending", pt: "Analisar gastos", es: "Analizar gastos" } },
+      { id: "bills", icon: "!", labels: { en: "Alert bills", pt: "Alertar contas", es: "Avisar facturas" } },
+      { id: "investments", icon: "↗", labels: { en: "Plan investments", pt: "Planejar investimentos", es: "Planificar inversiones" } },
+      { id: "financing", icon: "%", labels: { en: "Simulate financing", pt: "Simular financiamentos", es: "Simular financiamientos" } },
+      { id: "reports", icon: "▤", labels: { en: "Issue reports", pt: "Emitir relatórios", es: "Emitir informes" } }
+    ]
+  },
+  {
+    id: "health",
+    icon: "❤️",
+    labels: { en: "Health", pt: "Saúde", es: "Salud" },
+    items: [
+      { id: "medicine", icon: "+", labels: { en: "Remind medicine", pt: "Lembrar remédios", es: "Recordar medicamentos" } },
+      { id: "symptoms", icon: "•", labels: { en: "Record symptoms", pt: "Registrar sintomas", es: "Registrar síntomas" } },
+      { id: "water", icon: "◌", labels: { en: "Control water intake", pt: "Controlar consumo de água", es: "Controlar consumo de agua" } },
+      { id: "exercise", icon: "↻", labels: { en: "Plan exercises", pt: "Planejar exercícios", es: "Planificar ejercicios" } },
+      { id: "sleep", icon: "☾", labels: { en: "Monitor sleep", pt: "Monitorar sono", es: "Monitorear sueño" } },
+      { id: "weight", icon: "⚖", labels: { en: "Record weight", pt: "Registrar peso", es: "Registrar peso" } }
+    ]
+  },
+  {
+    id: "personal",
+    icon: "◎",
+    labels: { en: "Personal Life", pt: "Vida Pessoal", es: "Vida Personal" },
+    items: [
+      { id: "travel", icon: "✈", labels: { en: "Plan trips", pt: "Planejar viagens", es: "Planificar viajes" } },
+      { id: "shopping", icon: "□", labels: { en: "Make shopping lists", pt: "Fazer lista de compras", es: "Crear lista de compras" } },
+      { id: "events", icon: "◇", labels: { en: "Organize events", pt: "Organizar eventos", es: "Organizar eventos" } },
+      { id: "subscriptions", icon: "⟳", labels: { en: "Control subscriptions", pt: "Controlar assinaturas", es: "Controlar suscripciones" } },
+      { id: "birthdays", icon: "*", labels: { en: "Remember birthdays", pt: "Lembrar aniversários", es: "Recordar cumpleaños" } },
+      { id: "routine", icon: "☷", labels: { en: "Plan routine", pt: "Planejar rotina", es: "Planificar rutina" } }
+    ]
+  },
+  {
+    id: "communication",
+    icon: "✉",
+    labels: { en: "Communication", pt: "Comunicação", es: "Comunicación" },
+    items: [
+      { id: "messages", icon: "✍", labels: { en: "Write messages", pt: "Escrever mensagens", es: "Escribir mensajes" } },
+      { id: "translate", icon: "文", labels: { en: "Translate languages", pt: "Traduzir idiomas", es: "Traducir idiomas" } },
+      { id: "whatsapp", icon: "WA", labels: { en: "Reply to WhatsApp", pt: "Responder WhatsApp", es: "Responder WhatsApp" } },
+      { id: "calls", icon: "☎", labels: { en: "Make calls", pt: "Fazer ligações", es: "Hacer llamadas" } },
+      { id: "auto_replies", icon: "↵", labels: { en: "Create auto replies", pt: "Criar respostas automáticas", es: "Crear respuestas automáticas" } }
+    ]
+  },
+  {
+    id: "intelligence",
+    icon: "◉",
+    labels: { en: "Intelligence", pt: "Inteligência", es: "Inteligencia" },
+    items: [
+      { id: "internet", icon: "⌕", labels: { en: "Search the internet", pt: "Pesquisar na internet", es: "Buscar en internet" } },
+      { id: "prices", icon: "$", labels: { en: "Compare prices", pt: "Comparar preços", es: "Comparar precios" } },
+      { id: "pdfs", icon: "PDF", labels: { en: "Read PDFs", pt: "Ler PDFs", es: "Leer PDFs" } },
+      { id: "contracts", icon: "§", labels: { en: "Read contracts", pt: "Ler contratos", es: "Leer contratos" } },
+      { id: "laws", icon: "⚖", labels: { en: "Explain laws", pt: "Explicar leis", es: "Explicar leyes" } },
+      { id: "books", icon: "▣", labels: { en: "Summarize books", pt: "Resumir livros", es: "Resumir libros" } },
+      { id: "videos", icon: "▶", labels: { en: "Watch videos and summarize", pt: "Assistir vídeos e resumir", es: "Ver videos y resumir" } }
+    ]
+  },
+  {
+    id: "automation",
+    icon: "⚙",
+    labels: { en: "Automation", pt: "Automação", es: "Automatización" },
+    items: [
+      { id: "smart_home", icon: "⌂", labels: { en: "Control smart home", pt: "Controlar casa inteligente", es: "Controlar casa inteligente" } },
+      { id: "apis", icon: "API", labels: { en: "Trigger APIs", pt: "Acionar APIs", es: "Activar APIs" } },
+      { id: "automations", icon: "⚙", labels: { en: "Create automations", pt: "Criar automações", es: "Crear automatizaciones" } },
+      { id: "services", icon: "⇄", labels: { en: "Integrate services", pt: "Integrar serviços", es: "Integrar servicios" } },
+      { id: "scripts", icon: ">_", labels: { en: "Run scripts", pt: "Executar scripts", es: "Ejecutar scripts" } },
+      { id: "servers", icon: "▥", labels: { en: "Control servers", pt: "Controlar servidores", es: "Controlar servidores" } }
+    ]
+  },
+  {
+    id: "business",
+    icon: "▨",
+    labels: { en: "Business", pt: "Negócios", es: "Negocios" },
+    items: [
+      { id: "sales", icon: "↗", labels: { en: "Track sales", pt: "Acompanhar vendas", es: "Seguir ventas" } },
+      { id: "proposals", icon: "▤", labels: { en: "Generate proposals", pt: "Gerar propostas", es: "Generar propuestas" } },
+      { id: "contracts_business", icon: "§", labels: { en: "Create contracts", pt: "Criar contratos", es: "Crear contratos" } },
+      { id: "clients", icon: "◎", labels: { en: "Manage clients", pt: "Gerenciar clientes", es: "Gestionar clientes" } },
+      { id: "crm", icon: "CRM", labels: { en: "Make CRM", pt: "Fazer CRM", es: "Hacer CRM" } },
+      { id: "business_reports", icon: "▤", labels: { en: "Generate reports", pt: "Gerar relatórios", es: "Generar informes" } },
+      { id: "competitors", icon: "⌕", labels: { en: "Analyze competitors", pt: "Analisar concorrentes", es: "Analizar competidores" } }
+    ]
+  },
+  {
+    id: "content",
+    icon: "✍",
+    labels: { en: "Content", pt: "Conteúdo", es: "Contenido" },
+    items: [
+      { id: "articles", icon: "✍", labels: { en: "Write articles", pt: "Escrever artigos", es: "Escribir artículos" } },
+      { id: "posts", icon: "#", labels: { en: "Create posts", pt: "Criar posts", es: "Crear posts" } },
+      { id: "images", icon: "▧", labels: { en: "Generate images", pt: "Gerar imagens", es: "Generar imágenes" } },
+      { id: "videos_edit", icon: "▸", labels: { en: "Edit videos", pt: "Editar vídeos", es: "Editar videos" } },
+      { id: "scripts_content", icon: "⌁", labels: { en: "Create scripts", pt: "Criar roteiros", es: "Crear guiones" } },
+      { id: "captions", icon: "CC", labels: { en: "Generate captions", pt: "Gerar legendas", es: "Generar subtítulos" } }
+    ]
+  }
+];
+
+const AHX_ICON_MAP = {
+  work: "briefcase-business",
+  manage_tasks: "list-checks",
+  create_documents: "file-plus-2",
+  summarize_meetings: "notebook-text",
+  write_emails: "mail",
+  research: "search",
+  presentations: "presentation",
+  plan_projects: "kanban",
+  delegate_tasks: "user-round-plus",
+  track_deadlines: "clock",
+  development: "code-2",
+  generate_code: "file-code-2",
+  fix_bugs: "bug",
+  explain_errors: "circle-alert",
+  review_code: "scan-search",
+  generate_tests: "flask-conical",
+  document_apis: "book-open-text",
+  plan_architecture: "boxes",
+  github: "github",
+  roadmap: "route",
+  logs: "scroll-text",
+  studies: "graduation-cap",
+  study_plan: "calendar-check",
+  explain_subjects: "messages-square",
+  solve_exercises: "pencil",
+  mock_tests: "clipboard-list",
+  correct_answers: "badge-check",
+  summaries: "file-text",
+  flashcards: "copy",
+  progress: "trending-up",
+  finance: "wallet",
+  expenses: "receipt",
+  budget: "calculator",
+  spending: "chart-pie",
+  bills: "bell-ring",
+  investments: "chart-no-axes-combined",
+  financing: "percent",
+  reports: "chart-column",
+  health: "heart-pulse",
+  medicine: "pill",
+  symptoms: "activity",
+  water: "droplets",
+  exercise: "dumbbell",
+  sleep: "moon",
+  weight: "scale",
+  personal: "sparkles",
+  travel: "plane",
+  shopping: "shopping-cart",
+  events: "calendar-days",
+  subscriptions: "repeat",
+  birthdays: "cake",
+  routine: "calendar-clock",
+  communication: "message-circle",
+  messages: "message-square-text",
+  translate: "languages",
+  whatsapp: "message-circle-reply",
+  calls: "phone-call",
+  auto_replies: "reply",
+  intelligence: "brain",
+  internet: "globe",
+  prices: "badge-dollar-sign",
+  pdfs: "file-type-2",
+  contracts: "file-signature",
+  laws: "scale",
+  books: "book-open",
+  videos: "captions",
+  automation: "settings-2",
+  smart_home: "house",
+  apis: "plug-zap",
+  automations: "workflow",
+  services: "combine",
+  scripts: "terminal",
+  servers: "server",
+  business: "building-2",
+  sales: "badge-dollar-sign",
+  proposals: "files",
+  contracts_business: "file-pen-line",
+  clients: "users",
+  crm: "panel-top",
+  business_reports: "chart-column-increasing",
+  competitors: "search-check",
+  content: "pen-tool",
+  articles: "newspaper",
+  posts: "send",
+  images: "image",
+  videos_edit: "video",
+  scripts_content: "scroll",
+  captions: "subtitles"
+};
+
+const AHX_ICON_PROVIDER_MAP = {
+  "activity": "tabler:activity",
+  "alert-circle": "tabler:alert-circle",
+  "apple": "simple-icons:apple",
+  "audio-lines": "tabler:wave-sine",
+  "badge-check": "tabler:badge-check",
+  "badge-dollar-sign": "tabler:currency-dollar",
+  "badge-x": "tabler:letter-x",
+  "bell": "tabler:bell",
+  "bell-ring": "tabler:bell-ringing",
+  "book-open": "tabler:book-2",
+  "book-open-text": "tabler:book",
+  "boxes": "tabler:boxes",
+  "brain": "tabler:brain",
+  "briefcase-business": "tabler:briefcase",
+  "bug": "tabler:bug",
+  "building-2": "tabler:building",
+  "cake": "tabler:cake",
+  "calculator": "tabler:calculator",
+  "calendar-check": "tabler:calendar-check",
+  "calendar-clock": "tabler:calendar-time",
+  "calendar-days": "tabler:calendar-event",
+  "captions": "tabler:captions",
+  "chart-column": "tabler:chart-bar",
+  "chart-column-increasing": "tabler:chart-bar",
+  "chart-no-axes-combined": "tabler:chart-line",
+  "chart-pie": "tabler:chart-pie",
+  "check": "tabler:check",
+  "chevron-down": "tabler:chevron-down",
+  "chevron-left": "tabler:chevron-left",
+  "chevron-right": "tabler:chevron-right",
+  "chevron-up": "tabler:chevron-up",
+  "chrome": "simple-icons:google",
+  "circle": "tabler:circle",
+  "circle-alert": "tabler:alert-circle",
+  "clipboard-list": "tabler:clipboard-list",
+  "clock": "tabler:clock",
+  "code-2": "tabler:code",
+  "combine": "tabler:arrows-join",
+  "copy": "tabler:copy",
+  "dumbbell": "tabler:barbell",
+  "droplets": "tabler:droplet",
+  "eye": "tabler:eye",
+  "eye-off": "tabler:eye-off",
+  "facebook": "simple-icons:facebook",
+  "file-code-2": "tabler:file-code",
+  "file-down": "tabler:file-download",
+  "file-pen-line": "tabler:file-pencil",
+  "file-plus-2": "tabler:file-plus",
+  "file-signature": "tabler:file-certificate",
+  "file-text": "tabler:file-text",
+  "file-type-2": "tabler:file-type-pdf",
+  "file-up": "tabler:file-upload",
+  "files": "tabler:files",
+  "filter": "tabler:filter",
+  "flask-conical": "tabler:flask",
+  "gamepad-2": "tabler:device-gamepad-2",
+  "github": "simple-icons:github",
+  "globe": "tabler:world",
+  "graduation-cap": "tabler:school",
+  "hash": "tabler:hash",
+  "heart-pulse": "tabler:heart-rate-monitor",
+  "house": "tabler:home",
+  "image": "tabler:photo",
+  "inbox": "tabler:inbox",
+  "info": "tabler:info-circle",
+  "kanban": "tabler:layout-kanban",
+  "languages": "tabler:language",
+  "layout-list": "tabler:list",
+  "linkedin": "simple-icons:linkedin",
+  "list-checks": "tabler:list-check",
+  "mail": "tabler:mail",
+  "maximize-2": "tabler:maximize",
+  "menu": "tabler:menu-2",
+  "message-circle": "tabler:message-circle",
+  "message-circle-reply": "simple-icons:whatsapp",
+  "message-square-text": "tabler:message",
+  "messages-square": "tabler:messages",
+  "mic": "tabler:microphone",
+  "moon": "tabler:moon",
+  "move-right": "tabler:arrow-right",
+  "notebook-text": "tabler:notebook",
+  "panel-top": "tabler:layout-dashboard",
+  "panels-top-left": "simple-icons:microsoft",
+  "pencil": "tabler:pencil",
+  "pen-tool": "tabler:writing",
+  "percent": "tabler:percentage",
+  "phone-call": "tabler:phone-call",
+  "pill": "tabler:pill",
+  "plane": "tabler:plane",
+  "plug-zap": "tabler:plug-connected",
+  "plus": "tabler:plus",
+  "presentation": "tabler:presentation",
+  "receipt": "tabler:receipt",
+  "repeat": "tabler:repeat",
+  "reply": "tabler:corner-down-left",
+  "route": "tabler:route",
+  "scale": "tabler:scale",
+  "scan-search": "tabler:scan",
+  "scroll": "tabler:scroll",
+  "scroll-text": "tabler:scroll",
+  "search": "tabler:search",
+  "search-check": "tabler:search",
+  "send": "tabler:send",
+  "server": "tabler:server",
+  "settings-2": "tabler:settings",
+  "shopping-cart": "tabler:shopping-cart",
+  "smartphone": "simple-icons:apple",
+  "sparkles": "tabler:sparkles",
+  "subtitles": "tabler:subtitles",
+  "sun": "tabler:sun",
+  "terminal": "tabler:terminal-2",
+  "trash-2": "tabler:trash",
+  "trending-up": "tabler:trending-up",
+  "triangle-alert": "tabler:alert-triangle",
+  "twitter": "simple-icons:x",
+  "upload": "tabler:upload",
+  "user-round-plus": "tabler:user-plus",
+  "users": "tabler:users",
+  "video": "tabler:video",
+  "wallet": "tabler:wallet",
+  "workflow": "tabler:automation",
+  "x": "tabler:x"
+};
+
+const AHX_PERSONAL_ACTIVE_IDS = ["travel", "shopping", "events", "subscriptions", "birthdays", "routine"];
+
+const AHX_DIARY_MODULES = [
+  {
+    id: "travel",
+    active: true,
+    iconName: "plane",
+    labels: { en: "Plan trips", pt: "Planejar viagens", es: "Planificar viajes" },
+    items: [
+      diaryItem("travel_1", "planned", "high", "2026-07-12", "Marina", "Flights", {
+        en: "Compare flights to Lisbon",
+        pt: "Comparar voos para Lisboa",
+        es: "Comparar vuelos a Lisboa"
+      }, {
+        en: "Check direct flights, baggage rules, and morning departures.",
+        pt: "Verificar voos diretos, regras de bagagem e saídas pela manhã.",
+        es: "Revisar vuelos directos, reglas de equipaje y salidas por la mañana."
+      }),
+      diaryItem("travel_2", "progress", "medium", "2026-07-18", "Alex", "Hotel", {
+        en: "Book hotel near the center",
+        pt: "Reservar hotel perto do centro",
+        es: "Reservar hotel cerca del centro"
+      }, {
+        en: "Prioritize breakfast, workspace, and late check-in.",
+        pt: "Priorizar café da manhã, espaço de trabalho e check-in tardio.",
+        es: "Priorizar desayuno, espacio de trabajo y check-in tardío."
+      }),
+      diaryItem("travel_3", "complete", "low", "2026-07-20", "Nina", "Route", {
+        en: "Build three-day itinerary",
+        pt: "Montar roteiro de três dias",
+        es: "Crear itinerario de tres días"
+      }, {
+        en: "Museums, local restaurants, and one free afternoon.",
+        pt: "Museus, restaurantes locais e uma tarde livre.",
+        es: "Museos, restaurantes locales y una tarde libre."
+      }),
+      diaryItem("travel_4", "planned", "medium", "2026-08-02", "Alex", "Documents", {
+        en: "Check passport and insurance",
+        pt: "Conferir passaporte e seguro",
+        es: "Revisar pasaporte y seguro"
+      }, {
+        en: "Store copies in the trip folder before departure.",
+        pt: "Salvar cópias na pasta da viagem antes da saída.",
+        es: "Guardar copias en la carpeta del viaje antes de salir."
+      })
+    ]
+  },
+  {
+    id: "shopping",
+    active: false,
+    iconName: "shopping-cart",
+    labels: { en: "Make shopping lists", pt: "Fazer lista de compras", es: "Crear lista de compras" },
+    items: [
+      diaryItem("shopping_1", "planned", "medium", "2026-06-30", "Alex", "Market", {
+        en: "Weekly groceries",
+        pt: "Compras da semana",
+        es: "Compras de la semana"
+      }, {
+        en: "Fruit, vegetables, coffee, rice, and cleaning supplies.",
+        pt: "Frutas, verduras, café, arroz e produtos de limpeza.",
+        es: "Frutas, verduras, café, arroz y productos de limpieza."
+      }),
+      diaryItem("shopping_2", "progress", "low", "2026-07-01", "Marina", "Home", {
+        en: "Kitchen replacement items",
+        pt: "Reposições da cozinha",
+        es: "Reposiciones de cocina"
+      }, {
+        en: "Check filters, storage jars, and paper towels.",
+        pt: "Conferir filtros, potes organizadores e papel toalha.",
+        es: "Revisar filtros, frascos organizadores y papel de cocina."
+      }),
+      diaryItem("shopping_3", "complete", "high", "2026-07-05", "Nina", "Gift", {
+        en: "Birthday gift list",
+        pt: "Lista de presentes de aniversário",
+        es: "Lista de regalos de cumpleaños"
+      }, {
+        en: "Books, headphones, and a handwritten card.",
+        pt: "Livros, fones e um cartão escrito à mão.",
+        es: "Libros, audífonos y una tarjeta escrita a mano."
+      })
+    ]
+  },
+  {
+    id: "events",
+    active: false,
+    iconName: "calendar-days",
+    labels: { en: "Organize events", pt: "Organizar eventos", es: "Organizar eventos" },
+    items: [
+      diaryItem("events_1", "planned", "high", "2026-07-10", "Alex", "Family", {
+        en: "Family dinner",
+        pt: "Jantar em família",
+        es: "Cena familiar"
+      }, {
+        en: "Confirm guests, menu, table setup, and music.",
+        pt: "Confirmar convidados, cardápio, mesa e música.",
+        es: "Confirmar invitados, menú, mesa y música."
+      }),
+      diaryItem("events_2", "progress", "medium", "2026-07-22", "Marina", "Friends", {
+        en: "Game night",
+        pt: "Noite de jogos",
+        es: "Noche de juegos"
+      }, {
+        en: "Invite six people and prepare snacks.",
+        pt: "Convidar seis pessoas e preparar petiscos.",
+        es: "Invitar a seis personas y preparar snacks."
+      }),
+      diaryItem("events_3", "complete", "low", "2026-08-04", "Nina", "Community", {
+        en: "Neighborhood meeting",
+        pt: "Reunião do bairro",
+        es: "Reunión del barrio"
+      }, {
+        en: "Agenda and shared notes are ready.",
+        pt: "Pauta e notas compartilhadas estão prontas.",
+        es: "La agenda y las notas compartidas están listas."
+      })
+    ]
+  },
+  {
+    id: "subscriptions",
+    active: false,
+    iconName: "repeat",
+    labels: { en: "Control subscriptions", pt: "Controlar assinaturas", es: "Controlar suscripciones" },
+    items: [
+      diaryItem("subscriptions_1", "planned", "high", "2026-07-03", "Alex", "Streaming", {
+        en: "Review streaming plans",
+        pt: "Revisar planos de streaming",
+        es: "Revisar planes de streaming"
+      }, {
+        en: "Cancel duplicate plans and keep only shared accounts.",
+        pt: "Cancelar planos duplicados e manter apenas contas compartilhadas.",
+        es: "Cancelar planes duplicados y mantener solo cuentas compartidas."
+      }),
+      diaryItem("subscriptions_2", "progress", "medium", "2026-07-08", "Marina", "Software", {
+        en: "Audit software renewals",
+        pt: "Auditar renovações de softwares",
+        es: "Auditar renovaciones de software"
+      }, {
+        en: "Check design, storage, and productivity tools.",
+        pt: "Conferir ferramentas de design, armazenamento e produtividade.",
+        es: "Revisar herramientas de diseño, almacenamiento y productividad."
+      }),
+      diaryItem("subscriptions_3", "complete", "low", "2026-07-15", "Nina", "Finance", {
+        en: "Update payment cards",
+        pt: "Atualizar cartões de pagamento",
+        es: "Actualizar tarjetas de pago"
+      }, {
+        en: "Main card updated for monthly services.",
+        pt: "Cartão principal atualizado nos serviços mensais.",
+        es: "Tarjeta principal actualizada en servicios mensuales."
+      })
+    ]
+  },
+  {
+    id: "birthdays",
+    active: false,
+    iconName: "cake",
+    labels: { en: "Remember birthdays", pt: "Lembrar aniversários", es: "Recordar cumpleaños" },
+    items: [
+      diaryItem("birthdays_1", "planned", "medium", "2026-07-09", "Alex", "Family", {
+        en: "Mom's birthday",
+        pt: "Aniversário da mãe",
+        es: "Cumpleaños de mamá"
+      }, {
+        en: "Book lunch and prepare a photo album.",
+        pt: "Reservar almoço e preparar álbum de fotos.",
+        es: "Reservar almuerzo y preparar álbum de fotos."
+      }),
+      diaryItem("birthdays_2", "progress", "high", "2026-07-28", "Marina", "Friends", {
+        en: "Surprise for Leo",
+        pt: "Surpresa para Leo",
+        es: "Sorpresa para Leo"
+      }, {
+        en: "Coordinate cake, playlist, and guest arrival time.",
+        pt: "Coordenar bolo, playlist e horário dos convidados.",
+        es: "Coordinar pastel, playlist y horario de llegada."
+      }),
+      diaryItem("birthdays_3", "complete", "low", "2026-08-12", "Nina", "Reminder", {
+        en: "Send card to Clara",
+        pt: "Enviar cartão para Clara",
+        es: "Enviar tarjeta a Clara"
+      }, {
+        en: "Card scheduled and address confirmed.",
+        pt: "Cartão agendado e endereço confirmado.",
+        es: "Tarjeta programada y dirección confirmada."
+      })
+    ]
+  },
+  {
+    id: "routine",
+    active: false,
+    iconName: "calendar-clock",
+    labels: { en: "Plan routine", pt: "Planejar rotina", es: "Planificar rutina" },
+    items: [
+      diaryItem("routine_1", "planned", "high", "2026-07-01", "Alex", "Morning", {
+        en: "Morning routine reset",
+        pt: "Reiniciar rotina da manhã",
+        es: "Reiniciar rutina de la mañana"
+      }, {
+        en: "Wake up, hydrate, walk, and review daily plan.",
+        pt: "Acordar, hidratar, caminhar e revisar o plano do dia.",
+        es: "Despertar, hidratarse, caminar y revisar el plan diario."
+      }),
+      diaryItem("routine_2", "progress", "medium", "2026-07-06", "Marina", "Focus", {
+        en: "Deep work blocks",
+        pt: "Blocos de trabalho focado",
+        es: "Bloques de trabajo profundo"
+      }, {
+        en: "Two ninety-minute blocks before meetings.",
+        pt: "Dois blocos de noventa minutos antes das reuniões.",
+        es: "Dos bloques de noventa minutos antes de reuniones."
+      }),
+      diaryItem("routine_3", "complete", "low", "2026-07-11", "Nina", "Evening", {
+        en: "Evening shutdown",
+        pt: "Encerramento da noite",
+        es: "Cierre de la noche"
+      }, {
+        en: "Prepare clothes, notes, and breakfast plan.",
+        pt: "Preparar roupas, notas e plano do café da manhã.",
+        es: "Preparar ropa, notas y plan del desayuno."
+      })
+    ]
+  }
+];
+
+const AHX_DIARY_EXTRA_ITEMS = {
+  travel: [
+    diaryItem("travel_5", "progress", "high", "2026-08-09", "Marina", "Budget", {
+      en: "Estimate daily trip budget",
+      pt: "Estimar orçamento diário da viagem",
+      es: "Estimar presupuesto diario del viaje"
+    }, {
+      en: "Separate food, transport, tickets, and emergency reserve.",
+      pt: "Separar alimentação, transporte, ingressos e reserva de emergência.",
+      es: "Separar comida, transporte, entradas y reserva de emergencia."
+    }),
+    diaryItem("travel_6", "complete", "medium", "2026-08-14", "Nina", "Packing", {
+      en: "Create packing checklist",
+      pt: "Criar checklist de mala",
+      es: "Crear checklist de equipaje"
+    }, {
+      en: "Clothes, chargers, medicine, documents, and weather items.",
+      pt: "Roupas, carregadores, remédios, documentos e itens para o clima.",
+      es: "Ropa, cargadores, medicamentos, documentos e itens para o clima."
+    }),
+    diaryItem("travel_7", "planned", "low", "2026-08-20", "Alex", "Local", {
+      en: "Save local restaurant options",
+      pt: "Salvar opções de restaurantes locais",
+      es: "Guardar opciones de restaurantes locales"
+    }, {
+      en: "Choose places near the hotel and near planned attractions.",
+      pt: "Escolher lugares perto do hotel e das atrações planejadas.",
+      es: "Elegir lugares cerca del hotel y de las atracciones planeadas."
+    })
+  ],
+  shopping: [
+    diaryItem("shopping_4", "planned", "high", "2026-07-08", "Alex", "Pharmacy", {
+      en: "Pharmacy monthly list",
+      pt: "Lista mensal da farmácia",
+      es: "Lista mensual de farmacia"
+    }, {
+      en: "Sunscreen, vitamins, basic medicine, and hygiene items.",
+      pt: "Protetor solar, vitaminas, remédios básicos e higiene.",
+      es: "Protector solar, vitaminas, medicamentos básicos e higiene."
+    }),
+    diaryItem("shopping_5", "progress", "medium", "2026-07-12", "Marina", "Office", {
+      en: "Home office supplies",
+      pt: "Materiais para home office",
+      es: "Materiales para home office"
+    }, {
+      en: "Notebook, pens, cable organizer, and monitor wipes.",
+      pt: "Caderno, canetas, organizador de cabos e lenços para monitor.",
+      es: "Cuaderno, bolígrafos, organizador de cables y paños para monitor."
+    }),
+    diaryItem("shopping_6", "complete", "low", "2026-07-18", "Nina", "Pet", {
+      en: "Pet supplies refill",
+      pt: "Reposição de itens do pet",
+      es: "Reposición de itens de mascota"
+    }, {
+      en: "Food, treats, cleaning bags, and grooming brush.",
+      pt: "Ração, petiscos, saquinhos de limpeza e escova.",
+      es: "Comida, premios, bolsas de limpieza y cepillo."
+    })
+  ],
+  events: [
+    diaryItem("events_4", "planned", "medium", "2026-08-11", "Alex", "Work", {
+      en: "Team coffee meetup",
+      pt: "Café com o time",
+      es: "Café con el equipo"
+    }, {
+      en: "Reserve a quiet place and confirm attendance.",
+      pt: "Reservar um local tranquilo e confirmar presença.",
+      es: "Reservar un lugar tranquilo y confirmar asistencia."
+    }),
+    diaryItem("events_5", "progress", "high", "2026-08-18", "Marina", "Home", {
+      en: "Apartment open house",
+      pt: "Recepção no apartamento",
+      es: "Recepción en el apartamento"
+    }, {
+      en: "Prepare invitations, drinks, playlist, and cleaning schedule.",
+      pt: "Preparar convites, bebidas, playlist e agenda de limpeza.",
+      es: "Preparar invitaciones, bebidas, playlist y agenda de limpieza."
+    }),
+    diaryItem("events_6", "complete", "low", "2026-08-26", "Nina", "Class", {
+      en: "Online workshop",
+      pt: "Workshop online",
+      es: "Workshop online"
+    }, {
+      en: "Slides, access link, reminders, and feedback form are ready.",
+      pt: "Slides, link de acesso, lembretes e formulário estão prontos.",
+      es: "Slides, enlace de acceso, recordatorios y formulario listos."
+    })
+  ],
+  subscriptions: [
+    diaryItem("subscriptions_4", "planned", "medium", "2026-07-21", "Alex", "Fitness", {
+      en: "Review gym membership",
+      pt: "Revisar assinatura da academia",
+      es: "Revisar membresía del gimnasio"
+    }, {
+      en: "Compare usage, monthly cost, and cancellation deadline.",
+      pt: "Comparar uso, custo mensal e prazo de cancelamento.",
+      es: "Comparar uso, costo mensual y plazo de cancelación."
+    }),
+    diaryItem("subscriptions_5", "progress", "high", "2026-07-24", "Marina", "Cloud", {
+      en: "Reduce cloud storage cost",
+      pt: "Reduzir custo do armazenamento em nuvem",
+      es: "Reducir costo del almacenamiento en nube"
+    }, {
+      en: "Remove duplicate backups and downgrade unused storage.",
+      pt: "Remover backups duplicados e reduzir plano sem uso.",
+      es: "Eliminar backups duplicados y reducir plan sin uso."
+    }),
+    diaryItem("subscriptions_6", "complete", "low", "2026-07-30", "Nina", "News", {
+      en: "Cancel unused newsletter",
+      pt: "Cancelar newsletter sem uso",
+      es: "Cancelar newsletter sin uso"
+    }, {
+      en: "Subscription removed and renewal reminder deleted.",
+      pt: "Assinatura removida e lembrete de renovação apagado.",
+      es: "Suscripción removida y recordatorio de renovación eliminado."
+    })
+  ],
+  birthdays: [
+    diaryItem("birthdays_4", "planned", "high", "2026-08-19", "Alex", "Family", {
+      en: "Prepare Ana's party",
+      pt: "Preparar festa da Ana",
+      es: "Preparar fiesta de Ana"
+    }, {
+      en: "Order cake, balloons, snacks, and guest confirmations.",
+      pt: "Pedir bolo, balões, salgados e confirmações dos convidados.",
+      es: "Pedir pastel, globos, snacks y confirmaciones de invitados."
+    }),
+    diaryItem("birthdays_5", "progress", "medium", "2026-08-23", "Marina", "Gift", {
+      en: "Choose gift for Rafael",
+      pt: "Escolher presente para Rafael",
+      es: "Elegir regalo para Rafael"
+    }, {
+      en: "Compare watch, backpack, and bookstore voucher.",
+      pt: "Comparar relógio, mochila e vale de livraria.",
+      es: "Comparar reloj, mochila y vale de librería."
+    }),
+    diaryItem("birthdays_6", "complete", "low", "2026-09-02", "Nina", "Message", {
+      en: "Schedule birthday messages",
+      pt: "Agendar mensagens de aniversário",
+      es: "Programar mensajes de cumpleaños"
+    }, {
+      en: "Messages scheduled for family and close friends.",
+      pt: "Mensagens agendadas para família e amigos próximos.",
+      es: "Mensajes programados para familia y amigos cercanos."
+    })
+  ],
+  routine: [
+    diaryItem("routine_4", "planned", "medium", "2026-07-16", "Alex", "Health", {
+      en: "Plan weekly exercise windows",
+      pt: "Planejar horários de exercício da semana",
+      es: "Planificar horarios de ejercicio de la semana"
+    }, {
+      en: "Three strength sessions and two lighter walks.",
+      pt: "Três treinos de força e duas caminhadas leves.",
+      es: "Tres entrenamientos de fuerza y dos caminatas leves."
+    }),
+    diaryItem("routine_5", "progress", "high", "2026-07-20", "Marina", "Admin", {
+      en: "Create Sunday reset checklist",
+      pt: "Criar checklist de reset de domingo",
+      es: "Crear checklist de reinicio del domingo"
+    }, {
+      en: "Laundry, agenda review, meals, bills, and weekly goals.",
+      pt: "Lavanderia, revisão da agenda, refeições, contas e metas.",
+      es: "Lavandería, revisión de agenda, comidas, cuentas y metas."
+    }),
+    diaryItem("routine_6", "complete", "low", "2026-07-25", "Nina", "Sleep", {
+      en: "Set sleep reminder",
+      pt: "Configurar lembrete de sono",
+      es: "Configurar recordatorio de sueño"
+    }, {
+      en: "Reminder enabled with a thirty-minute wind-down window.",
+      pt: "Lembrete ativado com janela de trinta minutos para desacelerar.",
+      es: "Recordatorio activado con ventana de treinta minutos para bajar ritmo."
+    })
+  ]
+};
+
+function diaryItem(id, status, priority, date, owner, tag, title, details) {
+  return { id, status, priority, date, owner, tag, title, details };
+}
