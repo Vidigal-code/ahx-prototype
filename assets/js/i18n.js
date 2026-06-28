@@ -12,12 +12,13 @@ const storage = {
 };
 
 function getLanguage() {
-  return AHX_CONFIG.defaultLanguage;
+  const savedLanguage = storage.get("ahx_language", AHX_CONFIG.defaultLanguage);
+  return AHX_TRANSLATIONS[savedLanguage] ? savedLanguage : AHX_CONFIG.defaultLanguage;
 }
 
 function setLanguage(language) {
   if (AHX_TRANSLATIONS[language]) {
-    storage.set("ahx_language", AHX_CONFIG.defaultLanguage);
+    storage.set("ahx_language", language);
   }
 }
 
@@ -31,5 +32,5 @@ function labelOf(entity) {
 }
 
 function languageMenu() {
-  return AHX_CONFIG.languages[getLanguage()].menu;
+  return AHX_CONFIG.languages[getLanguage()]?.menu ?? AHX_CONFIG.languages[AHX_CONFIG.defaultLanguage].menu;
 }

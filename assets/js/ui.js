@@ -115,9 +115,11 @@ function renderSidebar(activePage = "") {
       node("a", {
         className: item.id === activePage ? "is-active" : "",
         href: routePath(item.route),
-        text: t(item.labelKey),
         onClick: closeSidebarOnMobile
-      })
+      }, [
+        lucideIcon(iconNameOf(item), "lucide-icon sidebar__nav-icon"),
+        node("span", { text: t(item.labelKey) })
+      ])
     ))
   ]);
 }
